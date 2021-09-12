@@ -5,8 +5,15 @@ from pygame.locals import *
 
 pygame.init()
 
-win_size = [640,640]
+win_size = [872+32,672+32]
+gs_surface = [640,640]
 screen = pygame.display.set_mode(win_size)
+barrier = pygame.Surface([672+32,672+32])
+barrier.fill([34, 107, 14])
+screen.fill([255,255,255])
+screen.blit(barrier , [200,0])
+game_surface = pygame.Surface([640,640])
+game_surface.fill([215,255,215])
 run = True
 grid_size = 50
 clock = pygame.time.Clock()
@@ -18,14 +25,14 @@ while run:
      keys = pygame.key.get_pressed()
 
      if interval % 30 == 0 and interval != 0:
-          snake.move(screen)
+          snake.move(screen,game_surface)
           for n in snake.list:
                if n[1]==snake.list[len(snake.list)-1][1] and n != snake.list[len(snake.list)-1]:
-                    screen.fill([0,0,0])
+                    game_surface.fill([215,255,215])
                     snake = Snake()
                     snake.move_side = "RIGHT"
-               elif n[1][0] < 0 or n[1][1] < 0 or n[1][0] > win_size[0] or n[1][1] > win_size[1]:
-                    screen.fill([0,0,0])
+               elif n[1][0] < 0 or n[1][1] < 0 or n[1][0] > gs_surface[0]-32 or n[1][1] > gs_surface[1]-32:
+                    game_surface.fill([215,255,215])
                     snake = Snake()
                     snake.move_side = "RIGHT"
      
@@ -41,7 +48,8 @@ while run:
      for event in pygame.event.get():
           if event.type == pygame.QUIT:
                run = False
-
+     
+     screen.blit(game_surface,[232,32])
      pygame.display.flip()
      clock.tick(200)
 
