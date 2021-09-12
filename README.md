@@ -1,5 +1,4 @@
 # snake_python_pygame
-Simple snake game on Python with Pygame module
 
 **How to install and launch the game ?**
 
