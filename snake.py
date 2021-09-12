@@ -90,10 +90,13 @@ class Snake:
                     game_screen.blit(surface,self.food[1])
                self.spawnFood(game_screen)
                self.score += 1
-               surface = pygame.Surface((200,672+32))
-               surface.fill([255,255,255])
+               surface = pygame.Surface((game_screen.get_width()+64,32))
+               surface.fill([34, 107, 14])
                screen.blit(surface,(0,0))
-               screen.blit(pygame.font.Font("./fonts/Urbanist.ttf", 30).render(f"SCORE : {self.score}", True, (0, 0, 0)), (20, 20))
+               font = pygame.font.Font("./fonts/Urbanist.ttf", 16)
+               font.set_bold(True)
+               render = font.render(f"SCORE : {self.score}", True, (0, 0, 0))
+               screen.blit(render , (8, 7))
 
           if self.food[1] == self.list[len(self.list)-1][1]:
                self.lenght += 1

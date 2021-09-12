@@ -5,13 +5,10 @@ from pygame.locals import *
 
 pygame.init()
 
-win_size = [872+32,672+32]
+win_size = [672+32,672+32]
 gs_surface = [640,640]
 screen = pygame.display.set_mode(win_size)
-barrier = pygame.Surface([672+32,672+32])
-barrier.fill([34, 107, 14])
-screen.fill([255,255,255])
-screen.blit(barrier , [200,0])
+screen.fill([34, 107, 14])
 game_surface = pygame.Surface([640,640])
 game_surface.fill([215,255,215])
 clock = pygame.time.Clock()
@@ -58,7 +55,7 @@ while run:
           elif (keys[K_UP]-keys[K_DOWN] == -1):
                snake.move_side =  'DOWN'
           
-          screen.blit(game_surface,[232,32])
+          screen.blit(game_surface,[32,32])
           pygame.display.flip()
           clock.tick(200)
 
