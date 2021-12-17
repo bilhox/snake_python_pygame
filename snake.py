@@ -9,7 +9,7 @@ class Snake:
           self.score = -1
           self.list = []
           self.is_food_here = False
-          self.move_side = "RIGHT"
+          self.move_side = "LEFT"
           self.food = None
 
           surface = pygame.image.load("./img/snake_fragments/frag_8.png")
